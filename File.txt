@@ -1,0 +1,5 @@
+This file have several lines.
+Some of them are unique.
+Some - not.
+Some - not.
+We have to output only unique.
