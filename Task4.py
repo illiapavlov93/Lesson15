@@ -1,8 +1,7 @@
 class IZip:
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
-        self.c = zip(self.a, self.b)
+    def __init__(self, *args):
+        self.args = args
+        self.c = my_zip(self.args)
 
     def __iter__(self):
         return self
@@ -15,21 +14,25 @@ class IZip:
             return d
 
 
-def zip(a, b):
+def my_zip(args):
     out = []
-    min_len = len(a)
-    if min_len > len(b):
-        min_len = len(b)
+    min_len = len(args[0])
+    for i in args:
+        if min_len > len(i):
+            min_len = len(i)
     for i in range(min_len):
-        item1 = a[i]
-        item2 = b[i]
-        out.append((item1, item2))
+        item = []
+        for collection in args:
+            item.append(collection[i])
+        out.append(tuple(item))
     return out
+
 
 s = 'abcd'
 t = [10, 20, 30]
+f = (1, 2, 3)
 
-obj = IZip(s, t)
+obj = IZip(s, t, f)
 while True:
     try:
         print(next(obj))

@@ -14,7 +14,7 @@ class Range:
             self.start += self.step
             if self.start > self.stop + 1:
                 raise StopIteration
-            return self.start - 1
+            return self.start - self.step
 
 
 for c in Range(10, start=2, step=3):
